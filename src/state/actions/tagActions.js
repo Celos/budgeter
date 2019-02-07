@@ -1,12 +1,11 @@
 export const CREATE_TAG = "CREATE_TAG";
 export const DELETE_TAG = "DELETE_TAG";
 
-export function createTag(id, name, parent) {
+export function createTag(id, name) {
 	return {
 		type: CREATE_TAG,
 		id: id,
-		name: name,
-		parent: parent
+		name: name
 	};
 }
 

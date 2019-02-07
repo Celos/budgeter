@@ -13,8 +13,7 @@ function tagsReducer(state = initialTags, action) {
 				...state,
 				[action.id]: {
 					id: action.id,
-					name: action.name,
-					parent: action.parent
+					name: action.name
 				}
 			};
 		case DELETE_TAG:
@@ -24,9 +23,18 @@ function tagsReducer(state = initialTags, action) {
 	}
 }
 
+function maxTagIdReducer(state = Object.keys(initialTags).length, action) {
+	switch (action.type) {
+		case CREATE_TAG:
+			return action.id;
+		default: return state;
+	}
+}
+
 const tags = (state = {}, action) => {
 	return {
-		tags: tagsReducer(state.tags, action)
+		tags: tagsReducer(state.tags, action),
+		maxTagId: maxTagIdReducer(state.maxTagId, action)
 	}
 };
 
