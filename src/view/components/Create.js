@@ -15,18 +15,18 @@ const styles = theme => ({
 });
 
 const initialState = {
-	newTagName: "",
+	newName: "",
 	clicked: false
 };
 
-class CreateTag extends Component {
+class Create extends Component {
 	constructor(props) {
 		super(props);
 		this.state = initialState;
 	}
 
-	setTagName = (e) => {
-		this.setState({newTagName: e.target.value});
+	setNewName = (e) => {
+		this.setState({newName: e.target.value});
 	};
 
 	showForm = () => {
@@ -37,7 +37,7 @@ class CreateTag extends Component {
 		if (e) {
 			e.preventDefault();
 		}
-		this.props.onCreateTag(this.props.newId, this.state.newTagName);
+		this.props.onCreate(this.props.newId, this.state.newName);
 		this.setState(initialState);
 	};
 
@@ -46,7 +46,7 @@ class CreateTag extends Component {
 
 		let form = (
 			<form onSubmit={this.submitForm}>
-				<Input value={this.state.newTagName} onChange={this.setTagName}/>
+				<Input value={this.state.newName} onChange={this.setNewName}/>
 			</form>
 		);
 
@@ -62,9 +62,9 @@ class CreateTag extends Component {
 	}
 }
 
-CreateTag.propTypes = {
-	onCreateTag: PropTypes.func.isRequired,
-	newTagId: PropTypes.number.isRequired
+Create.propTypes = {
+	onCreate: PropTypes.func.isRequired,
+	newId: PropTypes.number.isRequired
 };
 
-export default withStyles(styles)(CreateTag);
+export default withStyles(styles)(Create);

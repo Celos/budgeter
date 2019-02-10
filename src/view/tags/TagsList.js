@@ -6,7 +6,7 @@ import Chip from "@material-ui/core/Chip/Chip";
 import withStyles from "@material-ui/core/styles/withStyles";
 import {createTag, deleteTag} from "../../state/actions/tagActions";
 import styles from "./TagsList.styles";
-import CreateTag from "./CreateTag";
+import Create from "../components/Create";
 
 class TagsList extends Component {
 
@@ -25,15 +25,15 @@ class TagsList extends Component {
 							className={classes.chip}/>
 					);
 				})}
-				<CreateTag newId={this.props.newTagId} onCreateTag={this.props.onCreateTag}/>
+				<Create newId={this.props.newTagId} onCreate={this.props.onCreateTag}/>
 			</Paper>
 		);
 	}
 }
 const mapStateToProps = (state) => {
 	return {
-		tags: Object.values(state.tags),
-		newTagId: state.maxTagId + 1
+		tags: Object.values(state.tags.tags),
+		newTagId: state.tags.maxTagId + 1
 	};
 };
 
