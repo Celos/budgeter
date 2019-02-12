@@ -4,9 +4,9 @@ import LabelIcon from '@material-ui/icons/Label';
 import Paper from "@material-ui/core/Paper/Paper";
 import Chip from "@material-ui/core/Chip/Chip";
 import withStyles from "@material-ui/core/styles/withStyles";
-import {createTag, deleteTag} from "../../state/actions/tagActions";
+import {createTag, deleteTag} from "./state/actions";
 import styles from "./TagsList.styles";
-import Create from "../components/Create";
+import Create from "../common/Create";
 
 class TagsList extends Component {
 
@@ -15,7 +15,7 @@ class TagsList extends Component {
 
 		return (
 			<Paper className={classes.root}>
-				{this.props.tags.map(tag => {
+				{this.props.list.map(tag => {
 					return (
 						<Chip
 							key={tag.id}
@@ -32,8 +32,8 @@ class TagsList extends Component {
 }
 const mapStateToProps = (state) => {
 	return {
-		tags: Object.values(state.tags.tags),
-		newTagId: state.tags.maxTagId + 1
+		list: Object.values(state.tags.list),
+		newTagId: state.tags.maxId + 1
 	};
 };
 

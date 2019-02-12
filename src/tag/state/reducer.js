@@ -1,4 +1,4 @@
-import {CREATE_TAG, DELETE_TAG} from "../actions/tagActions";
+import {CREATE_TAG, DELETE_TAG} from "./actions";
 
 const initialTags = {
 	1: {id: 1, name: "Groceries"},
@@ -33,8 +33,8 @@ function maxTagIdReducer(state = Object.keys(initialTags).length, action) {
 
 const tags = (state = {}, action) => {
 	return {
-		tags: tagsReducer(state.tags, action),
-		maxTagId: maxTagIdReducer(state.maxTagId, action)
+		list: tagsReducer(state.list, action),
+		maxId: maxTagIdReducer(state.maxId, action)
 	}
 };
 

@@ -2,11 +2,11 @@ import React, {Component} from "react";
 import Paper from "@material-ui/core/Paper/Paper";
 import connect from "react-redux/es/connect/connect";
 import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "../tags/TagsList.styles";
+import styles from "../tag/TagsList.styles";
 import Chip from "@material-ui/core/Chip/Chip";
 import AccountBalance from "@material-ui/icons/AccountBalance";
-import {createAccount, deleteAccount} from "../../state/actions/accountActions";
-import Create from "../components/Create";
+import {createAccount, deleteAccount} from "./state/actions";
+import Create from "../common/Create";
 
 class AccountList extends Component {
 
@@ -15,7 +15,7 @@ class AccountList extends Component {
 
 		return (
 			<Paper className={classes.root}>
-				{this.props.accounts.map(account => {
+				{this.props.list.map(account => {
 					return (
 						<Chip
 							key={account.id}
@@ -33,8 +33,8 @@ class AccountList extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		accounts: Object.values(state.accounts.accounts),
-		newAccountId: state.accounts.maxAccountId + 1
+		list: Object.values(state.accounts.list),
+		newAccountId: state.accounts.maxId + 1
 	};
 };
 

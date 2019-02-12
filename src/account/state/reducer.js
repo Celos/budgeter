@@ -1,4 +1,4 @@
-import {CREATE_ACCOUNT, DELETE_ACCOUNT} from "../actions/accountActions";
+import {CREATE_ACCOUNT, DELETE_ACCOUNT} from "./actions";
 
 function accountsReducer(state = {}, action) {
 	switch (action.type) {
@@ -27,8 +27,8 @@ function maxAccountsIdReducer(state = 0, action) {
 
 const accounts = (state = {}, action) => {
 	return {
-		accounts: accountsReducer(state.accounts, action),
-		maxAccountId: maxAccountsIdReducer(state.maxAccountId, action)
+		list: accountsReducer(state.list, action),
+		maxId: maxAccountsIdReducer(state.maxId, action)
 	}
 };
 

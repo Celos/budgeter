@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
-import TagsList from "./view/tags/TagsList";
-import AccountList from "./view/accounts/AccountList";
+import TagsList from "./tag/TagsList";
+import AccountList from "./account/AccountList";
 
 class App extends Component {
 	render() {
